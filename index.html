@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Derecho Civil · Quizzes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:   #0A1F3D;
+    --navy2:  #123164;
+    --navy3:  #1A4A8A;
+    --sky:    #4A90D9;
+    --sky2:   #6AAEE8;
+    --skylt:  #A8CFEE;
+    --skypale:#E0EEF9;
+    --white:  #FFFFFF;
+    --off:    #F0F6FB;
+    --slate:  #4A6080;
+    --green:  #2E7D32;
+    --greenlt:#4CAF50;
+    --silver: #D6E4F0;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--navy);
+    border-bottom: 2px solid rgba(74,144,217,.2);
+    padding: 1.8rem 1.4rem 1.4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(74,144,217,.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-badge {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .2em;
+    color: var(--sky);
+    text-transform: uppercase;
+    margin-bottom: .6rem;
+  }
+  .header-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(1.8rem, 7vw, 2.8rem);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: .4rem;
+  }
+  .header-title span { color: var(--sky); }
+  .header-sub {
+    font-size: .88rem;
+    color: var(--skylt);
+    font-weight: 400;
+  }
+
+  /* ── CONTENIDO ── */
+  main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 1.6rem 1.2rem 3rem;
+  }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    color: var(--sky);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(74,144,217,.2);
+  }
+
+  /* ── TARJETA QUIZ ── */
+  .quiz-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--navy2);
+    border: 1.5px solid rgba(74,144,217,.2);
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+    text-decoration: none;
+    color: inherit;
+    margin-bottom: .75rem;
+    transition: border-color .18s, background .18s, transform .15s, box-shadow .18s;
+    position: relative;
+    overflow: hidden;
+  }
+  .quiz-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    background: var(--sky);
+    border-radius: 14px 0 0 14px;
+  }
+  .quiz-card:hover {
+    border-color: rgba(74,144,217,.5);
+    background: rgba(18,49,100,.9);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  }
+  .quiz-card:active { transform: translateY(0); }
+
+  .card-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: .78rem;
+    font-weight: 700;
+    color: var(--navy2);
+    background: var(--sky);
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: .04em;
+  }
+  .card-body { flex: 1; min-width: 0; }
+  .card-semana {
+    font-size: .72rem;
+    font-weight: 600;
+    color: var(--sky);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: .18rem;
+  }
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--white);
+    margin-bottom: .22rem;
+  }
+  .card-meta {
+    font-size: .78rem;
+    color: var(--slate);
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    flex-wrap: wrap;
+  }
+  .card-meta span { display: flex; align-items: center; gap: .22rem; }
+  .card-arrow {
+    font-size: 1.1rem;
+    color: var(--sky);
+    flex-shrink: 0;
+    opacity: .7;
+    transition: opacity .15s, transform .15s;
+  }
+  .quiz-card:hover .card-arrow { opacity: 1; transform: translateX(3px); }
+
+  /* ── PRÓXIMAMENTE ── */
+  .quiz-card.coming {
+    opacity: .45;
+    pointer-events: none;
+    cursor: default;
+  }
+  .quiz-card.coming::before { background: var(--slate); }
+  .quiz-card.coming .card-num { background: var(--slate); }
+  .badge-soon {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: var(--slate);
+    background: rgba(74,96,128,.15);
+    border: 1px solid rgba(74,96,128,.3);
+    border-radius: 6px;
+    padding: .15rem .45rem;
+    text-transform: uppercase;
+  }
+
+  /* ── INFO BOX ── */
+  .info-box {
+    background: rgba(74,144,217,.08);
+    border: 1px solid rgba(74,144,217,.2);
+    border-radius: 12px;
+    padding: 1rem 1.1rem;
+    font-size: .85rem;
+    color: var(--skylt);
+    line-height: 1.55;
+    margin-top: 1.8rem;
+  }
+  .info-box strong { color: var(--sky); font-weight: 600; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: .75rem;
+    color: var(--slate);
+    border-top: 1px solid rgba(74,144,217,.1);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="header-badge">Terciario · Primer Año</p>
+  <h1 class="header-title">Derecho <span>Civil</span></h1>
+  <p class="header-sub">Quizzes de repaso · Cátedra 2025</p>
+</header>
+
+<main>
+  <p class="section-title">Quizzes disponibles</p>
+
+  <!-- ── SEMANA 2 — ACTIVO ── -->
+  <a href="s02-fuentes.html" class="quiz-card">
+    <div class="card-num">S2</div>
+    <div class="card-body">
+      <p class="card-semana">Semana 2 · 23 de marzo</p>
+      <p class="card-title">Fuentes del Derecho</p>
+      <div class="card-meta">
+        <span>⏱ 8 preguntas</span>
+        <span>🎯 20 seg por pregunta</span>
+      </div>
+    </div>
+    <span class="card-arrow">→</span>
+  </a>
+
+  <!-- ── SEMANAS SIGUIENTES — PRÓXIMAMENTE ── -->
+  <div class="quiz-card coming">
+    <div class="card-num">S3</div>
+    <div class="card-body">
+      <p class="card-semana">Semana 3</p>
+      <p class="card-title">Personas humanas y jurídicas</p>
+      <div class="card-meta">
+        <span class="badge-soon">Próximamente</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-card coming">
+    <div class="card-num">S4</div>
+    <div class="card-body">
+      <p class="card-semana">Semana 4</p>
+      <p class="card-title">Actos jurídicos</p>
+      <div class="card-meta">
+        <span class="badge-soon">Próximamente</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-card coming">
+    <div class="card-num">S5</div>
+    <div class="card-body">
+      <p class="card-semana">Semana 5</p>
+      <p class="card-title">Vicios de los actos jurídicos</p>
+      <div class="card-meta">
+        <span class="badge-soon">Próximamente</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <strong>¿Cómo funciona?</strong> Ingresá tu nombre al comenzar el quiz. Al finalizar, tu resultado queda registrado automáticamente. Necesitás conexión a internet para que el registro funcione.
+  </div>
+</main>
+
+<footer>
+  Derecho Civil · Terciario · 2025
+</footer>
+
+</body>
+</html>
